@@ -20,9 +20,9 @@ public class WSDL implements Serializable {
     @GeneratedValue
     private Long id;
     @Column
-    private String url;
-    @Column
     private String title;
+    @Column
+    private String url;
     @Column
     private String description;
 
@@ -38,6 +38,14 @@ public class WSDL implements Serializable {
     public Long getId() {
         return id;
     }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getUrl() {
         return url;
@@ -45,14 +53,6 @@ public class WSDL implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {

@@ -4,7 +4,7 @@
  */
 package cloudservices.brokerage.crawler.crawlingcommons.model.DAO;
 
-import cloudservices.brokerage.crawler.crawlingcommons.model.entities.WSDL;
+import cloudservices.brokerage.crawler.crawlingcommons.model.entities.Seed;
 
 /**
  *
@@ -12,7 +12,7 @@ import cloudservices.brokerage.crawler.crawlingcommons.model.entities.WSDL;
  */
 public class SeedDAO extends BaseDAO {
 
-    public void addWSDL(WSDL wsdl) throws DAOException {
-        super.save(wsdl);
+    public void addSeed(Seed seed) throws DAOException {
+        super.save(seed);
     }
 }
