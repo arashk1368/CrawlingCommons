@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cloudservices.brokerage.crawler.crawlingcommons.model.entities;
 
 import java.io.Serializable;
@@ -18,17 +17,24 @@ import javax.persistence.Id;
  */
 @Entity
 public class Seed implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
     @Column
     private String url;
+    @Column
+    private String title;
+    @Column
+    private String description;
 
     public Seed() {
     }
 
-    public Seed(String url) {
+    public Seed(String url, String title, String description) {
         this.url = url;
+        this.title = title;
+        this.description = description;
     }
 
     public Long getId() {
@@ -46,7 +52,21 @@ public class Seed implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
-    
-   
 }
