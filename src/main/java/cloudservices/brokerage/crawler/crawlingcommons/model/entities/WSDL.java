@@ -23,7 +23,7 @@ public class WSDL implements Serializable {
     @Column
     private String title;
     @Column(columnDefinition = "varchar(1000)", length = 1000)
-    @Length(max = 10000)
+    @Length(max = 1000)
     private String url;
     @Column(columnDefinition = "varchar(10000)", length = 10000)
     @Length(max = 10000)
