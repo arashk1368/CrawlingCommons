@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
 
 /*
  * @author Arash Khodadadi http://www.arashkhodadadi.com/  
@@ -21,9 +22,11 @@ public class WSDL implements Serializable {
     private Long id;
     @Column
     private String title;
-    @Column(columnDefinition = "varchar(1000)")
+    @Column(columnDefinition = "varchar(1000)", length = 1000)
+    @Length(max = 10000)
     private String url;
-    @Column(columnDefinition = "varchar(1000)")
+    @Column(columnDefinition = "varchar(10000)", length = 10000)
+    @Length(max = 10000)
     private String description;
 
     public WSDL() {

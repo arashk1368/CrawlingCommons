@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -23,9 +24,11 @@ public class Seed implements Serializable {
     private Long id;
     @Column
     private String title;
-    @Column(columnDefinition = "varchar(1000)")
+    @Column(columnDefinition = "varchar(1000)", length = 1000)
+    @Length(max = 10000)
     private String url;
-    @Column(columnDefinition="varchar(1000)")
+    @Column(columnDefinition = "varchar(1000)", length = 1000)
+    @Length(max = 10000)
     private String description;
 
     public Seed() {
@@ -44,7 +47,7 @@ public class Seed implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getTitle() {
         return title;
     }
