@@ -23,9 +23,9 @@ public class Seed implements Serializable {
     private Long id;
     @Column
     private String title;
-    @Column
+    @Column(columnDefinition = "varchar(1000)")
     private String url;
-    @Column
+    @Column(columnDefinition="varchar(1000)")
     private String description;
 
     public Seed() {

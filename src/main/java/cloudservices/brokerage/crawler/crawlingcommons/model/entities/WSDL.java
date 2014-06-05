@@ -21,9 +21,9 @@ public class WSDL implements Serializable {
     private Long id;
     @Column
     private String title;
-    @Column
+    @Column(columnDefinition = "varchar(1000)")
     private String url;
-    @Column
+    @Column(columnDefinition = "varchar(1000)")
     private String description;
 
     public WSDL() {
@@ -38,7 +38,7 @@ public class WSDL implements Serializable {
     public Long getId() {
         return id;
     }
-    
+
     public String getTitle() {
         return title;
     }
