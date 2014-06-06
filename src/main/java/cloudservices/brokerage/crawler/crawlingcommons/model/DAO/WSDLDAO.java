@@ -28,4 +28,17 @@ public class WSDLDAO extends BaseDAO {
             return true;
         }
     }
+
+    public WSDL find(String url) throws DAOException {
+        Query query = super.getSession().createQuery("from WSDL where url = :para1 ");
+        query.setParameter("para1", url);
+        List list = query.list();
+        if (list.isEmpty()) {
+            return null;
+        } else if (list.size() == 1) {
+            return (WSDL) list.get(0);
+        } else {
+            throw new DAOException("Duplicate tuples for url = " + url);
+        }
+    }
 }
