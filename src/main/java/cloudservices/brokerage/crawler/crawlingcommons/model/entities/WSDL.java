@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import org.hibernate.validator.constraints.Length;
 
 /*
  * @author Arash Khodadadi http://www.arashkhodadadi.com/  
@@ -20,21 +19,28 @@ public class WSDL implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
+    @Column(columnDefinition = "varchar(20000)", length = 20000)
     private String title;
-    @Column(columnDefinition = "varchar(1000)", length = 1000)
-    @Length(max = 1000)
-    private String url;
     @Column(columnDefinition = "varchar(10000)", length = 10000)
-    @Length(max = 10000)
+    private String url;
+    @Column(columnDefinition = "varchar(20000)", length = 20000)
     private String description;
+    @Column(columnDefinition = "varchar(10000)", length = 10000)
+    private String searchedQuery;
 
     public WSDL() {
     }
 
-    public WSDL(String url, String title, String description) {
+    public WSDL(String url, String title, String description, String query) {
         this.url = url;
         this.title = title;
+        this.description = description;
+        this.searchedQuery = query;
+    }
+
+    public WSDL(String title, String url, String description) {
+        this.title = title;
+        this.url = url;
         this.description = description;
     }
 
@@ -65,4 +71,13 @@ public class WSDL implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getQuery() {
+        return searchedQuery;
+    }
+
+    public void setQuery(String query) {
+        this.searchedQuery = query;
+    }
+    
 }
