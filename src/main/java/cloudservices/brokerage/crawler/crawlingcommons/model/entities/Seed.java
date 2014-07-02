@@ -19,10 +19,11 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 public class Seed implements Serializable {
 
-    @Id
+@Id
     @GeneratedValue
     private Long id;
-    @Column
+    @Column(columnDefinition = "varchar(1000)", length = 1000)
+    @Length(max = 1000)
     private String title;
     @Column(columnDefinition = "varchar(1000)", length = 1000)
     @Length(max = 1000)
@@ -30,6 +31,9 @@ public class Seed implements Serializable {
     @Column(columnDefinition = "varchar(10000)", length = 10000)
     @Length(max = 10000)
     private String description;
+    @Column(columnDefinition = "varchar(1000)", length = 1000)
+    @Length(max = 1000)
+    private String searchedQuery;
 
     public Seed() {
     }
@@ -40,6 +44,13 @@ public class Seed implements Serializable {
         this.description = description;
     }
 
+    public Seed(String title, String url, String description, String searchedQuery) {
+        this.title = title;
+        this.url = url;
+        this.description = description;
+        this.searchedQuery = searchedQuery;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -71,4 +82,13 @@ public class Seed implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getSearchedQuery() {
+        return searchedQuery;
+    }
+
+    public void setSearchedQuery(String searchedQuery) {
+        this.searchedQuery = searchedQuery;
+    }
+    
 }
