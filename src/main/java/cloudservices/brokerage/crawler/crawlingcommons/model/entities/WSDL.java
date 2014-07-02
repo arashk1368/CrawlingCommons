@@ -80,7 +80,7 @@ public class WSDL implements Serializable {
         this.searchedQuery = query;
     }
 
-    public WSDL(String title, String url, String description) {
+    public WSDL(String url, String title, String description) {
         this.title = title;
         this.url = url;
         this.description = description;

@@ -85,7 +85,7 @@ public class Seed implements Serializable {
         this.description = description;
     }
 
-    public Seed(String title, String url, String description, String searchedQuery) {
+    public Seed(String url, String title, String description, String searchedQuery) {
         this.title = title;
         this.url = url;
         this.description = description;
