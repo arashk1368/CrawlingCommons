@@ -4,6 +4,7 @@
  */
 package cloudservices.brokerage.crawler.crawlingcommons.model.entities;
 
+import cloudservices.brokerage.crawler.crawlingcommons.model.enums.WSDLColType;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,6 +33,42 @@ public class WSDL implements Serializable {
     @Column(columnDefinition = "varchar(1000)", length = 1000)
     @Length(max = 1000)
     private String searchedQuery;
+
+    public static boolean checkLength(long length, WSDLColType colType) {
+        switch (colType) {
+            case DESCRIPTION:
+                if (length < 10000) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case TITLE:
+                if (length < 1000) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case URL:
+                if (length < 1000) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case SEARCHED_QUERY:
+                if (length < 1000) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            default:
+                if (length < 255) {
+                    return true;
+                } else {
+                    return false;
+                }
+        }
+    }
 
     public WSDL() {
     }
@@ -84,5 +121,4 @@ public class WSDL implements Serializable {
     public void setQuery(String query) {
         this.searchedQuery = query;
     }
-    
 }
