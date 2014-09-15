@@ -91,51 +91,23 @@ public class RawCrawledService implements Serializable {
         this.type = type;
         this.updated = isUpdated;
     }
-    
+
     public static boolean checkLength(long length, RawCrawledServiceColType colType) {
         switch (colType) {
             case DESCRIPTION:
-                if (length < 10000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 10000;
             case TITLE:
-                if (length < 1000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 1000;
             case URL:
-                if (length < 1000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 1000;
             case SEARCHED_QUERY:
-                if (length < 1000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 1000;
             case SOURCE:
-                if (length < 1000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 1000;
             case EXTRA_CONTEXT:
-                if (length < 1000) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 1000;
             default:
-                if (length < 255) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return length < 255;
         }
     }
 
