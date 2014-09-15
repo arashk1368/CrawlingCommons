@@ -48,7 +48,7 @@ public class RawCrawledService implements Serializable {
     @Enumerated(EnumType.STRING)
     private RawCrawledServiceType type;
     @Column
-    private boolean isUpdated;
+    private boolean updated;
     @OneToMany(mappedBy = "rawCrawledService")
     private Set<CrawledServiceSnapshot> crawledServiceSnapshots;
 
@@ -89,7 +89,7 @@ public class RawCrawledService implements Serializable {
         this.source = source;
         this.extraContext = extraContext;
         this.type = type;
-        this.isUpdated = isUpdated;
+        this.updated = isUpdated;
     }
     
     public static boolean checkLength(long length, RawCrawledServiceColType colType) {
@@ -207,11 +207,11 @@ public class RawCrawledService implements Serializable {
         return crawledServiceSnapshots;
     }
 
-    public boolean isIsUpdated() {
-        return isUpdated;
+    public boolean isUpdated() {
+        return updated;
     }
 
-    public void setIsUpdated(boolean isUpdated) {
-        this.isUpdated = isUpdated;
+    public void setUpdated(boolean isUpdated) {
+        this.updated = isUpdated;
     }
 }
