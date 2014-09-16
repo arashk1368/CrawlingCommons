@@ -53,9 +53,16 @@ public class RawCrawledService implements Serializable {
     private Set<CrawledServiceSnapshot> crawledServiceSnapshots;
 
     public RawCrawledService() {
+        this.title = "";
+        this.url = "";
+        this.description = "";
+        this.searchedQuery = "";
+        this.source = "";
+        this.extraContext = "";
     }
 
     public RawCrawledService(String title, String url, String description, RawCrawledServiceType type) {
+        super();
         this.title = title;
         this.url = url;
         this.description = description;
@@ -63,6 +70,7 @@ public class RawCrawledService implements Serializable {
     }
 
     public RawCrawledService(String title, String url, String description, String searchedQuery, String source, RawCrawledServiceType type) {
+        super();
         this.title = title;
         this.url = url;
         this.description = description;
@@ -72,6 +80,7 @@ public class RawCrawledService implements Serializable {
     }
 
     public RawCrawledService(String title, String url, String description, String searchedQuery, String source, String extraContext, RawCrawledServiceType type) {
+        super();
         this.title = title;
         this.url = url;
         this.description = description;
@@ -82,6 +91,7 @@ public class RawCrawledService implements Serializable {
     }
 
     public RawCrawledService(String title, String url, String description, String searchedQuery, String source, String extraContext, RawCrawledServiceType type, boolean isUpdated) {
+        super();
         this.title = title;
         this.url = url;
         this.description = description;
