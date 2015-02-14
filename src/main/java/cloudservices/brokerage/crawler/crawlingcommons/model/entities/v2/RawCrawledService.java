@@ -60,6 +60,17 @@ public class RawCrawledService implements Serializable {
         this.source = "";
         this.extraContext = "";
     }
+    
+    public RawCrawledService(RawCrawledService rcs) {
+        this.title = rcs.title;
+        this.url = rcs.url;
+        this.description = rcs.description;
+        this.searchedQuery = rcs.searchedQuery;
+        this.source = rcs.source;
+        this.extraContext = rcs.extraContext;
+        this.type = rcs.type;
+        this.updated = rcs.updated;
+    }
 
     public RawCrawledService(String title, String url, String description, RawCrawledServiceType type) {
         super();
