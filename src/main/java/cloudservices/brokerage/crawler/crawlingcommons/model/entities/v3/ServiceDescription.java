@@ -81,7 +81,7 @@ public class ServiceDescription implements Serializable {
     }
 
     public ServiceDescription(RawCrawledService rcs) {
-        super();
+        this();
         this.title = rcs.getTitle();
         this.url = rcs.getUrl();
         this.description=rcs.getDescription();
@@ -95,7 +95,7 @@ public class ServiceDescription implements Serializable {
     
     
     public ServiceDescription(ServiceDescription sd) {
-        super();
+        this();
         this.title = sd.title;
         this.url = sd.url;
         this.description = sd.description;
@@ -110,7 +110,7 @@ public class ServiceDescription implements Serializable {
     }
     
     public ServiceDescription(String title, String url, String description, String tags, String source, ServiceDescriptionType type) {
-        super();
+        this();
         this.title = title;
         this.url = url;
         this.description = description;
@@ -240,7 +240,6 @@ public class ServiceDescription implements Serializable {
     
     public void setServiceProvider(ServiceProvider serviceProvider) {
         this.serviceProvider = serviceProvider;
-        serviceProvider.setNumberOfServices(serviceProvider.getNumberOfServices() + 1);
     }
     
     public Set<ServiceDescriptionSnapshot> getCrawledServiceSnapshots() {

@@ -57,7 +57,7 @@ public class ServiceProvider {
     }
 
     public ServiceProvider(String url) {
-        super();
+        this();
         this.url = url;
     }
     
