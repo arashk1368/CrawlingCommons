@@ -32,4 +32,9 @@ public class ServiceDescriptionDAO extends BaseDAO {
             throw new DAOException("Duplicate tuples for url = " + url);
         }
     }
+
+    public List<ServiceDescription> getWithoutProvider() throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where serviceProvider is null");
+        return query.list();
+    }
 }
