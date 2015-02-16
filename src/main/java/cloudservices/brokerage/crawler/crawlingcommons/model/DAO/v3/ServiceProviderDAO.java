@@ -15,6 +15,7 @@ import org.hibernate.Query;
  * @author Arash Khodadadi <http://www.arashkhodadadi.com/>
  */
 public class ServiceProviderDAO extends BaseDAO {
+
     public void addServiceProvider(ServiceProvider serviceProvider) throws DAOException {
         super.save(serviceProvider);
     }
@@ -29,6 +30,19 @@ public class ServiceProviderDAO extends BaseDAO {
             return (ServiceProvider) list.get(0);
         } else {
             throw new DAOException("Duplicate tuples for url = " + url);
+        }
+    }
+
+    public ServiceProvider findByName(String name) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceProvider where name = :para1 ");
+        query.setParameter("para1", name);
+        List list = query.list();
+        if (list.isEmpty()) {
+            return null;
+        } else if (list.size() == 1) {
+            return (ServiceProvider) list.get(0);
+        } else {
+            throw new DAOException("Duplicate tuples for name = " + name);
         }
     }
 }
