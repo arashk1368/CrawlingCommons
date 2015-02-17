@@ -50,4 +50,10 @@ public class ServiceProviderDAO extends BaseDAO {
         Query query = super.getSession().createQuery("from ServiceProvider where name is null");
         return query.list();
     }
+
+    public List<ServiceProvider> findByNameWithoutException(String name) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceProvider where name = :para1 ");
+        query.setParameter("para1", name);
+        return query.list();
+    }
 }
