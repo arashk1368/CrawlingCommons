@@ -45,4 +45,9 @@ public class ServiceProviderDAO extends BaseDAO {
             throw new DAOException("Duplicate tuples for name = " + name);
         }
     }
+
+    public List<ServiceProvider> getWithoutName() throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceProvider where name is null");
+        return query.list();
+    }
 }
