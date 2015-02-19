@@ -39,35 +39,50 @@ public class ServiceDescriptionDAO extends BaseDAO {
         return query.list();
     }
 
-    public List<ServiceDescription> getAllWithType(ServiceDescriptionType type) throws DAOException {
-        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1");
+    public List<ServiceDescription> getAllWithType(ServiceDescriptionType type, long startingId, long endingId) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1"
+                + " and id >= :para2 and id <= :para3");
         query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
         return query.list();
     }
 
-    public List<ServiceDescription> getBothTimesNull(ServiceDescriptionType type) throws DAOException {
-        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1 and lastAvailableTime is null and lastUnavailableTime is null");
+    public List<ServiceDescription> getBothTimesNull(ServiceDescriptionType type, long startingId, long endingId) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1"
+                + " and lastAvailableTime is null and lastUnavailableTime is null and id >= :para2 and id <= :para3");
         query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
         return query.list();
     }
 
-    public List<ServiceDescription> getNeverAvailable(ServiceDescriptionType type) throws DAOException {
-        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1 and lastAvailableTime is null");
+    public List<ServiceDescription> getNeverAvailable(ServiceDescriptionType type, long startingId, long endingId) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1"
+                + " and lastAvailableTime is null and id >= :para2 and id <= :para3");
         query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
         return query.list();
     }
 
-    public List<ServiceDescription> getUpdated(ServiceDescriptionType type) throws DAOException {
-        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1 and updated = :para2");
+    public List<ServiceDescription> getUpdated(ServiceDescriptionType type, long startingId, long endingId) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1"
+                + " and updated = :para2 and id >= :para3 and id <= :para4");
         query.setParameter("para1", type);
         query.setParameter("para2", true);
+        query.setParameter("para3", startingId);
+        query.setParameter("para4", endingId);
         return query.list();
     }
 
-    public List<ServiceDescription> getUnavailable(ServiceDescriptionType type) throws DAOException {
-        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1 and wasAvailable = :para2");
+    public List<ServiceDescription> getUnavailable(ServiceDescriptionType type, long startingId, long endingId) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescription where type = :para1 and"
+                + " wasAvailable = :para2 and id >= :para3 and id <= :para4");
         query.setParameter("para1", type);
         query.setParameter("para2", false);
+        query.setParameter("para3", startingId);
+        query.setParameter("para4", endingId);
         return query.list();
     }
 
