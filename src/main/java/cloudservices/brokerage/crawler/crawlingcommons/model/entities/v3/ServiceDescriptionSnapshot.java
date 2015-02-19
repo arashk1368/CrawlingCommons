@@ -12,11 +12,13 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -27,7 +29,8 @@ import org.hibernate.validator.constraints.Length;
 public class ServiceDescriptionSnapshot implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "IdOrGenerated")
+    @GenericGenerator(name = "IdOrGenerated",strategy = "cloudservices.brokerage.crawler.crawlingcommons.utils.db_utils.UseExistingOrGenerateIdGenerator")
     private Long id;
     @Column(columnDefinition = "varchar(1000)", length = 1000)
     @Length(max = 1000)
