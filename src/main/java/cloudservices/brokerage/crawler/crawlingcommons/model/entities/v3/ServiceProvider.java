@@ -5,6 +5,7 @@
 package cloudservices.brokerage.crawler.crawlingcommons.model.entities.v3;
 
 import cloudservices.brokerage.crawler.crawlingcommons.model.enums.v3.ServiceDescriptionColType;
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import org.hibernate.validator.constraints.Length;
  * @author Arash Khodadadi <http://www.arashkhodadadi.com/>
  */
 @Entity
-public class ServiceProvider {
+public class ServiceProvider implements Serializable {
 
     @Id
     @GeneratedValue

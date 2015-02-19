@@ -30,7 +30,7 @@ public class ServiceDescriptionSnapshot implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "IdOrGenerated")
-    @GenericGenerator(name = "IdOrGenerated",strategy = "cloudservices.brokerage.crawler.crawlingcommons.utils.db_utils.UseExistingOrGenerateIdGenerator")
+    @GenericGenerator(name = "IdOrGenerated", strategy = "cloudservices.brokerage.crawler.crawlingcommons.utils.db_utils.UseExistingOrGenerateIdGenerator")
     private Long id;
     @Column(columnDefinition = "varchar(1000)", length = 1000)
     @Length(max = 1000)
@@ -45,6 +45,18 @@ public class ServiceDescriptionSnapshot implements Serializable {
     @ManyToOne
     @JoinColumn(name = "service_description_id")
     private ServiceDescription serviceDescription;
+    @ManyToOne
+    @JoinColumn(name = "primary_category_ctx_id")
+    private Category primaryCategoryWithCtx;
+    @ManyToOne
+    @JoinColumn(name = "primary_category_plain_id")
+    private Category primaryCategoryPlain;
+    @ManyToOne
+    @JoinColumn(name = "secondary_category_ctx_id")
+    private Category secondaryCategoryWithCtx;
+    @ManyToOne
+    @JoinColumn(name = "secondary_category_plain_id")
+    private Category secondaryCategoryPlain;
 
     public ServiceDescriptionSnapshot() {
     }
@@ -105,4 +117,35 @@ public class ServiceDescriptionSnapshot implements Serializable {
         this.serviceDescription = serviceDescription;
     }
 
+    public Category getPrimaryCategoryWithCtx() {
+        return primaryCategoryWithCtx;
+    }
+
+    public void setPrimaryCategoryWithCtx(Category primaryCategoryWithCtx) {
+        this.primaryCategoryWithCtx = primaryCategoryWithCtx;
+    }
+
+    public Category getPrimaryCategoryPlain() {
+        return primaryCategoryPlain;
+    }
+
+    public void setPrimaryCategoryPlain(Category primaryCategoryPlain) {
+        this.primaryCategoryPlain = primaryCategoryPlain;
+    }
+
+    public Category getSecondaryCategoryWithCtx() {
+        return secondaryCategoryWithCtx;
+    }
+
+    public void setSecondaryCategoryWithCtx(Category secondaryCategoryWithCtx) {
+        this.secondaryCategoryWithCtx = secondaryCategoryWithCtx;
+    }
+
+    public Category getSecondaryCategoryPlain() {
+        return secondaryCategoryPlain;
+    }
+
+    public void setSecondaryCategoryPlain(Category secondaryCategoryPlain) {
+        this.secondaryCategoryPlain = secondaryCategoryPlain;
+    }
 }
