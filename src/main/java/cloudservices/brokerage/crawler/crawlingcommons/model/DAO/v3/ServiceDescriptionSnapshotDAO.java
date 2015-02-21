@@ -33,4 +33,40 @@ public class ServiceDescriptionSnapshotDAO extends BaseDAO {
             return (ServiceDescriptionSnapshot) list.get(0);
         }
     }
+
+    public List<ServiceDescriptionSnapshot> getAll(long startingId, long endingId, ServiceDescriptionType type) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescriptionSnapshot where type = :para1"
+                + " and id >= :para2 and id <= :para3");
+        query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
+        return query.list();
+    }
+
+    public List<ServiceDescriptionSnapshot> getContexClassified(long startingId, long endingId, ServiceDescriptionType type) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescriptionSnapshot where type = :para1"
+                + " and id >= :para2 and id <= :para3 and primaryCategoryWithCtx is not null");
+        query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
+        return query.list();
+    }
+
+    public List<ServiceDescriptionSnapshot> getNotClassified(long startingId, long endingId, ServiceDescriptionType type) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescriptionSnapshot where type = :para1"
+                + " and id >= :para2 and id <= :para3 and primaryCategoryPlain is null and primaryCategoryWithCtx is null");
+        query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
+        return query.list();
+    }
+
+    public List<ServiceDescriptionSnapshot> getPlainClassified(long startingId, long endingId, ServiceDescriptionType type) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceDescriptionSnapshot where type = :para1"
+                + " and id >= :para2 and id <= :para3 and primaryCategoryPlain is not null");
+        query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
+        return query.list();
+    }
 }
