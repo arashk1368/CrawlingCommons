@@ -17,7 +17,20 @@ import org.hibernate.Query;
  * @author Arash Khodadadi http://www.arashkhodadadi.com/
  */
 public class ServiceDescriptionSnapshotDAO extends BaseDAO {
-
+    
+    public ServiceDescriptionSnapshot getById(long id) throws DAOException{
+         Query query = super.getSession().createQuery("from ServiceDescriptionSnapshot where id = :para1 ");
+        query.setParameter("para1", id);
+        List list = query.list();
+        if (list.isEmpty()) {
+            return null;
+        } else if (list.size() == 1) {
+            return (ServiceDescriptionSnapshot) list.get(0);
+        } else {
+            throw new DAOException("Duplicate tuples for id = " + id);
+        }
+    }
+    
     public void addSnapshot(ServiceDescriptionSnapshot snapshot) throws DAOException {
         super.save(snapshot);
     }
