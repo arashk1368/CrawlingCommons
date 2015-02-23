@@ -62,11 +62,20 @@ public class ServiceDescriptionSnapshot implements Serializable {
     }
 
     public ServiceDescriptionSnapshot(String fileAddress, Date accessedTime, boolean isProcessed, ServiceDescriptionType type, ServiceDescription serviceDesc) {
+        this();
         this.fileAddress = fileAddress;
         this.accessedTime = accessedTime;
         this.isProcessed = isProcessed;
         this.type = type;
         this.serviceDescription = serviceDesc;
+    }
+
+    public ServiceDescriptionSnapshot(ServiceDescriptionSnapshot snapshot) {
+        this();
+        this.accessedTime = snapshot.accessedTime;
+        this.fileAddress = snapshot.fileAddress;
+        this.isProcessed = snapshot.isProcessed;
+        this.type=snapshot.type;
     }
 
     public String getFileAddress() {
