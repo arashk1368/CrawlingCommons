@@ -86,4 +86,14 @@ public class ServiceDescriptionDAO extends BaseDAO {
         return query.list();
     }
 
+    public List getSnapped(ServiceDescriptionType type,long startingId, long endingId) throws DAOException {
+                Query query = super.getSession().createQuery("from ServiceDescription where type = :para1"
+                + " and (lastAvailableTime is not null or lastUnavailableTime is not null)"
+                        + " and id >= :para2 and id <= :para3");
+        query.setParameter("para1", type);
+        query.setParameter("para2", startingId);
+        query.setParameter("para3", endingId);
+        return query.list();
+    }
+
 }
