@@ -56,4 +56,10 @@ public class ServiceProviderDAO extends BaseDAO {
         query.setParameter("para1", name);
         return query.list();
     }
+
+    public List<ServiceProvider> findTop(int rank) throws DAOException {
+        Query query = super.getSession().createQuery("from ServiceProvider order by numberOfServices desc");
+        query.setMaxResults(rank);
+        return query.list();
+    }
 }
